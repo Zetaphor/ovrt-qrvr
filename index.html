@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="icon" href="data:,">
+  <script src="ovrt-helper.js"></script>
+</head>
+<body>
+<script>
+    console.log('Test');
+
+    const s = new WebSocket('ws://127.0.0.1:8000/');
+    s.onopen = e => {
+        console.log('Open');
+    }
+
+    // console.log(s);
+
+    s.onmessage = e => {
+        // console.log(e);
+        const m = JSON.parse(e.data);
+        if (!m.data.length) return;
+        console.log(m);
+
+
+        ovrt.setWinPosition(0, pos);
+    };
+</script>
+</body>
+</html>
